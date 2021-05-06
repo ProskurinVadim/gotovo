@@ -1,0 +1,18 @@
+.ant-table-wrapper {
+  margin-top: -11px;
+  table {
+    border-spacing: 0 11px;
+  }
+  tr>td {
+    margin: 10px 0;
+  }
+  tr.ant-table-row.ant-table-row-level-0:hover {
+    background: unset;
+    td {
+      background: unset;
+
+      border-top: 1px solid $additional-color;
+      border-bottom: 1px solid $additional-color;
+    }
+  }
+}

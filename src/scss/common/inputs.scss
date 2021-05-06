@@ -1,0 +1,24 @@
+.common-input {
+  box-shadow: $box-shadow-input;
+  border-radius: $border-radius-additional;
+  color: rgba(17, 17, 17, 0.48);
+  padding: 9px 27px;
+  @include font-text;
+  border: none;
+}
+
+.changeable-field {
+  &.un-changeable {
+    input {
+      border-color: $primary-color;
+    }
+    i {
+      color: $primary-color;
+    }
+  }
+  i {
+    margin: 0 7px;
+    color: $additional-color;
+    font-size: 20px;
+  }
+}

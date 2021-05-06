@@ -1,0 +1,23 @@
+.navbar {
+  height: 100vh;
+  width: $navbar-width;
+  z-index: 3;
+  position: fixed;
+  top: 0;
+  background-color: $additional-color;
+  &-list {
+    padding-top: 150px;
+    @include flex-column-align-center;
+    &-item {
+      margin: 40px 0;
+    }
+  }
+  &-icon {
+    color: $primary-color;
+    font-size: 35px;
+  }
+}
+.navbar-wrapper {
+  max-width: calc(100% - #{$navbar-width});
+  margin-left: $navbar-width
+}

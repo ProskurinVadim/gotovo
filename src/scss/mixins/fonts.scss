@@ -1,0 +1,26 @@
+@mixin font-header {
+  font-family: $main-font;
+  font-weight: bold;
+  font-size: 30px;
+  letter-spacing: 0.02em;
+}
+
+@mixin font-small-header {
+  font-family: $main-font;
+  font-weight: bold;
+  font-size: 20px;
+  letter-spacing: 0.02em;
+}
+
+@mixin font-text {
+  font-family: $main-font;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+@mixin font-button {
+  font-family: $main-font;
+  font-weight: 500;
+  font-size: 16px;
+}

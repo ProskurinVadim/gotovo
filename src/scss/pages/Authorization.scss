@@ -1,0 +1,29 @@
+.authorization-page {
+  background-color: $primary-background-color;
+  @include page-fw-fh;
+  .authorization-form {
+    margin: 80px auto;
+    padding: 0 50px;
+    width: 400px;
+    height: 400px;
+    box-shadow: $box-shadow-primary;
+    border-radius: $border-radius-main;
+    &-header {
+      @include font-header;
+      padding: 25px;
+    }
+    &-field {
+      @include flex-row-align-center;
+      width: 100%;
+      &-text {
+        @include font-text;
+      }
+    }
+    &-input {
+      margin: 10px 7px;
+    }
+    &-button {
+      margin-top: 70px;
+    }
+  }
+}

@@ -1,0 +1,19 @@
+.button-common {
+  display: block;
+  margin: 0 auto;
+  padding: 14px 11px;
+  width: 163px;
+  background-color: #FFD251;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  color: $primary-color;
+  @include font-text;
+  transition: 0.7s;
+  &:hover {
+    background-color: #FFFFFF;
+    border: 1px solid #FFD251;
+  }
+  &-dangerous {
+    background-color: #de3a55;
+  }
+}

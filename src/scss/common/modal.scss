@@ -1,0 +1,27 @@
+.modal {
+  position: fixed;
+  top: calc(50% - 150px);
+  left: calc(50% - 150px);
+  z-index: 5;
+  height: 300px;
+  width: 300px;
+  box-shadow: $box-shadow-primary;
+  background-color: #FFFFFF;
+  transition: 0.7s;
+  &-container {
+    transition: 0.7s;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,.5);
+    z-index: 4;
+  }
+  &-buttons {
+    @include flex-row-align-center;
+    button {
+      margin-right: 8px;
+    }
+  }
+}

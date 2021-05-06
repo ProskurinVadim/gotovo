@@ -1,0 +1,68 @@
+.calendar {
+  padding: 20px;
+  &-header {
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 60%;
+    padding-bottom: 15px;
+    &-title {
+      font-weight: 600;
+      font-size: 24px;
+    };
+    &-icon> i {
+      cursor: pointer;
+      font-size: 24px;
+    }
+  }
+  &-body {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    &-cell {
+      border: 1px solid #777;
+      width: 14%;
+      height: 14vh;
+      text-align: center;
+      position: relative;
+      cursor: pointer;
+      font-size: 14px;
+      .calendar-day {
+        font-weight: 600;
+      }
+      .number {
+        display: block;
+        padding-top: 5px;
+      }
+      .bg {
+        font-weight: 700;
+        line-height: 1;
+        color: black;
+        opacity: 0;
+        font-size: 135px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        transition: .25s ease-out;
+        letter-spacing: -.07em;
+      }
+      &:hover .bg, .calendar .body .selected .bg  {
+        opacity: 0.05;
+        transition: .5s ease-in;
+      }
+
+
+
+    }
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+
+
+/* GRID */

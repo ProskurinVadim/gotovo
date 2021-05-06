@@ -1,0 +1,42 @@
+.application {
+  &-header {
+    @include font-header;
+  }
+  &-modal.modal {
+    padding: 20px;
+    top: calc(50% - 300px);
+    left: calc(50% - 350px);
+    height: 600px;
+    width: 700px;
+    @include flex-column-justify-between-align-center;
+  }
+  &-pack {
+    @include font-text;
+  }
+  &-status {
+    display: inline-block;
+    border: 1px solid black;
+    padding: 4px 6px;
+    @include font-text;
+  }
+  &-field {
+    width: 70%;
+    @include flex-row-align-center;
+    p {
+      margin-right: 20px;
+    }
+  }
+  &-text {
+    @include font-text
+  }
+  &-input.common-input {
+    border: 2px solid $additional-color;
+  }
+  &-date-picker {
+    padding: 4px 11px;
+  }
+}
+
+.ant-table-tbody > tr.ant-table-row-level-1:hover > td {
+  background: unset!important;
+}
