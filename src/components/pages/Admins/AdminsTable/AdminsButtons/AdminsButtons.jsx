@@ -12,7 +12,7 @@ const AdminsButtons = ({data}) => {
     return (
         <div>
             <Button text="Удалить" onClick={deleteAdmin}/>
-            <Button text="Изменить"/>
+            {/*<Button text="Изменить"/>*/}
         </div>
     )
 };

@@ -10,7 +10,7 @@ export const getColumns = () => [
         title: "ФИО",
         dataIndex: "name",
         key: "name",
-        render: data => <p>{name}</p>
+        render: data => <p>{data}</p>
     },
     {
         title: "Email",
@@ -19,9 +19,9 @@ export const getColumns = () => [
         render: data => <p>{data}</p>
     },
     {
-        title: "Телефон",
-        dataIndex: "phone",
-        key: "phone",
+        title: "Пароль",
+        dataIndex: "password",
+        key: "password",
         render: data => <p>{data}</p>
     },
     {

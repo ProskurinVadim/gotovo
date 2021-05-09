@@ -5,7 +5,9 @@ import Application from "../../icons/Application";
 import Calendar from "../../icons/Calendar";
 import Table from "../../icons/Table";
 import {toggleApplicationsModal} from "../../../redux/actions/applicationsActions";
+import {logout} from "../../../redux/actions/authActions";
 import {Link} from "react-router-dom";
+import Logout from "../../icons/Logout"
 const Navbar = () => {
     const superAdmin = useSelector(({auth}) => auth.currentUser.superAdmin);
     console.log(superAdmin)
@@ -33,6 +35,9 @@ const Navbar = () => {
                     <li className="navbar-list-item"><Calendar className="navbar-icon" /></li>
                 </Link>
             </ul>
+            <div onClick={()=>dispatch(logout())} className={"logout"}>
+                <Logout />
+            </div>
         </nav>
     )
 };

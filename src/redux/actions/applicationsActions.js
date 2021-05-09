@@ -8,8 +8,9 @@ import {
     CHANGE_APPLICATION,
     ADD_APPLICATION,
     LOADING_APPLICATIONS,
-    TOGGLE_MODAL_APPLICATIONS
+    TOGGLE_MODAL_APPLICATIONS,
 } from "../actionsNames";
+import axios from "axios";
 
 const getApplications = () => dispatch => {
     dispatch(loadApplications());

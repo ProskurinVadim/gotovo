@@ -1,4 +1,4 @@
-import {AUTH_SUCCESS,AUTH_FAILED,AUTH_LOADING,DELETE_ADMIN} from "../actionsNames";
+import {AUTH_SUCCESS, AUTH_FAILED, AUTH_LOADING, DELETE_ADMIN, ADD_ADMIN,LOGOUT} from "../actionsNames";
 const initialState = {
     users : [{
         index:1,
@@ -70,11 +70,26 @@ export default function (state = initialState, {type,payload}) {
         }
         case DELETE_ADMIN : {
             const newUser = state.users;
-            newUser.filter(elem=>elem.index!==payload.id)
+            newUser.filter(elem=>elem.index!==payload.id);
             return{
                 ...state,
                 users : [...newUser.filter(elem=>elem.index!==payload.id)]
             }
+        }
+        case ADD_ADMIN : {
+            const newUsers = [...state.users,payload.admin];
+            return {
+                ...state,
+                users: newUsers
+            }
+        }
+
+        case LOGOUT : {
+            return {
+                ...state,
+                currentUser: {},
+            }
+
         }
         default : {
             return state

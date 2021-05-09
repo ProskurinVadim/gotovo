@@ -5,6 +5,10 @@
   position: fixed;
   top: 0;
   background-color: $additional-color;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
   &-list {
     padding-top: 150px;
     @include flex-column-align-center;
@@ -15,6 +19,13 @@
   &-icon {
     color: $primary-color;
     font-size: 35px;
+  }
+  .logout {
+    i {
+      color: $primary-color;
+      font-size: 35px;
+    }
+    margin-bottom: 45px;
   }
 }
 .navbar-wrapper {

@@ -3,6 +3,7 @@ export const LOGIN = "LOGIN";
 export const AUTH_FAILED = "AUTH_FAILED";
 export const AUTH_SUCCESS = "AUTH_SUCCESS";
 export const AUTH_LOADING = "AUTH_LOADING";
+export const LOGOUT = "LOGOUT";
 /*Application actions*/
 export const GET_APPLICATIONS = "GET_APPLICATIONS";
 export const SET_APPLICATION = "SET_APPLICATION";
@@ -14,5 +15,8 @@ export const ERROR_APPLICATION = "ERROR_APPLICATION";
 export const ADD_APPLICATION = "ADD_APPLICATION";
 export const LOADING_APPLICATIONS = "LOADING_APPLICATIONS";
 export const TOGGLE_MODAL_APPLICATIONS = "TOGGLE_MODAL_APPLICATIONS";
+export const CHANGE_STATUS = "CHANGE_STATUS";
 /*Admins actions */
 export const DELETE_ADMIN = "DELETE_ADMIN";
+export const ADD_ADMIN = "ADD_ADMIN";
+export const CHANGE_ADMIN = "CHANGE_ADMIN";

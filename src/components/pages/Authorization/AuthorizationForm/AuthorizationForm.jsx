@@ -16,8 +16,8 @@ const AuthorizationForm = ({loading}) => {
     const ButtonOnclick = useCallback(() => {
         emailValidation(emailValue);
         passwordValidation(passwordValue);
-        dispatch(authLogin({email : "admin@gmail.com",password : "admin"}));
-       // if (!emailError && !passwordError) dispatch(authLogin({email : emailValue,password : passwordValue}))
+        dispatch(authLogin("wow1996strap@gmail.com","Zhjckfd1945#" ));
+       // if (!emailError && !passwordError) dispatch(authLogin("wow1996strap@gmail.com","Zhjckfd1945#" ))
     },[emailValue,passwordValue]);
 
     return (

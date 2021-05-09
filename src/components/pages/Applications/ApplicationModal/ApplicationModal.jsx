@@ -8,7 +8,7 @@ import ChangeableInput from "../../../common/ChangeableInput";
 import {getStatusColor} from "../../../../utils/getStatusColor"
 const ApplicationModal = ({hideClick,okClick,cancelClick}) => {
     const {pib,data,pack,status} = useSelector(({applications}) => applications.currentApplication);
-    const {value,reset:restManValue,bind:bindManValue} = useInput(pib);
+
     return (
         <Modal
             okText="Відправити"
@@ -18,10 +18,11 @@ const ApplicationModal = ({hideClick,okClick,cancelClick}) => {
             cancelFunction={cancelClick}
             className={`application-modal `}
         >
+
             <p className="application-header">Контактна карточка</p>
-            <div className="application-field">
+            <div>
                 <p className="application-text">ПІБ нареченого та нареченої:</p>
-                <ChangeableInput className="application-input common-input" value={value} {...bindManValue} type="text"/>
+                <p className="application-text">{pib}</p>
             </div>
             <div className="application-field">
                 <p className="application-text">Дата заключення шлюбу:</p>

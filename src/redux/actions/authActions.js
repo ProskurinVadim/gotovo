@@ -1,7 +1,13 @@
-import {LOGIN,AUTH_FAILED,AUTH_SUCCESS,AUTH_LOADING,DELETE_ADMIN} from "../actionsNames";
-
-export const authLogin = ({email,password}) => dispatch => {
+import {LOGIN,AUTH_FAILED,AUTH_SUCCESS,AUTH_LOADING,DELETE_ADMIN,LOGOUT} from "../actionsNames";
+import axios from "axios";
+import baseURL from "./baseURL";
+export const authLogin = (email,password) => dispatch => {
     dispatch(authLoading())
+    axios
+        .post(`gotovo.herokuapp.com/api/v1/auth/accounts/admins/signin`,{email,password},)
+        .then((data)=>{
+            console.log(data)
+    })
     setTimeout(()=>{
         dispatch(authSuccess({email,password}))
     },1000);
@@ -11,6 +17,14 @@ export const authLogin = ({email,password}) => dispatch => {
 export const deleteUser = (id) => dispatch =>  {
     dispatch({type:DELETE_ADMIN,payload:{id}})
 };
+export const addUser = (admin) => dispatch =>{
+    dispatch({type:ADD_ADMIN,payload:{admin}})
+};
+
+
+export const logout = () => dispatch=> {
+    dispatch({type:LOGOUT});
+}
 
 const authSuccess = ({email,password}) => ({type : AUTH_SUCCESS,payload:{email,password}});
 const authLoading = () => ({type : AUTH_LOADING});
