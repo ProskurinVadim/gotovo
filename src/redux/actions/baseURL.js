@@ -1,1 +1,1 @@
-export default "gotovo.herokuapp.com";
+export default "https://gotovo.herokuapp.com/api/";

@@ -2,12 +2,14 @@ import {LOGIN,AUTH_FAILED,AUTH_SUCCESS,AUTH_LOADING,DELETE_ADMIN,LOGOUT} from ".
 import axios from "axios";
 import baseURL from "./baseURL";
 export const authLogin = (email,password) => dispatch => {
+
     dispatch(authLoading())
     axios
-        .post(`gotovo.herokuapp.com/api/v1/auth/accounts/admins/signin`,{email,password},)
+        .post(`${baseURL}v1/auth/accounts/admins/signin`,{email,password},{withCredentials:true,headers: {"Access-Control-Allow-Origin": "*"}
+        })
         .then((data)=>{
             console.log(data)
-    })
+    });
     setTimeout(()=>{
         dispatch(authSuccess({email,password}))
     },1000);
