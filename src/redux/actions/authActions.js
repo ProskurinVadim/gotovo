@@ -5,14 +5,11 @@ export const authLogin = (email,password) => dispatch => {
 
     dispatch(authLoading())
     axios
-        .post(`${baseURL}v1/auth/accounts/admins/signin`,{email,password},{withCredentials:true,headers: {"Access-Control-Allow-Origin": "*"}
-        })
-        .then((data)=>{
-            console.log(data)
+        .post(`${baseURL}v1/auth/accounts/admins/signin`,{email,password},)
+        .then(({data})=>{
+
+            dispatch(authSuccess(data))
     });
-    setTimeout(()=>{
-        dispatch(authSuccess({email,password}))
-    },1000);
 
 };
 
@@ -28,5 +25,5 @@ export const logout = () => dispatch=> {
     dispatch({type:LOGOUT});
 }
 
-const authSuccess = ({email,password}) => ({type : AUTH_SUCCESS,payload:{email,password}});
+const authSuccess = (auth) => ({type : AUTH_SUCCESS,payload:{auth}});
 const authLoading = () => ({type : AUTH_LOADING});
