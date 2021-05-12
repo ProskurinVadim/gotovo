@@ -1,7 +1,7 @@
 import React,{useRef,useEffect,useCallback} from "react";
 import Button from "../Button";
 
-const Modal = ({okFunction,okText,cancelFunction,hideFunction,cancelText,children,className}) => {
+const Modal = ({okFunction,okText,cancelFunction,hideFunction,cancelText,children,className=""}) => {
     const modalWrapper = useRef(null);
     useEffect(()=>{
         const outsideClick = ((e)=> {

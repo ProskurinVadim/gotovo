@@ -5,18 +5,16 @@ import {
     DELETE_APPLICATION,
     DELETE_APPLICATIONS,
     ERROR_APPLICATION,
-    CHANGE_APPLICATION,
+    CHANGE_APPLICATION_STATUS,
     ADD_APPLICATION,
     LOADING_APPLICATIONS,
     TOGGLE_MODAL_APPLICATIONS,
 } from "../actionsNames";
-import axios from "axios";
-
-const getApplications = () => dispatch => {
+import axios from "../../axios";
+import baseURL from "../../axios/baseURL"
+export const getApplications = () => dispatch => {
     dispatch(loadApplications());
-    setTimeout(()=>{
-        dispatch({type:GET_APPLICATIONS});
-    },1000);
+    axios.get(`${baseURL}/api/v1/orders`)
 };
 export const setApplication = application => dispatch => {
     dispatch({type : SET_APPLICATION,payload:{application}})
@@ -30,10 +28,10 @@ const deleteApplication = index => dispatch => {
 const deleteApplications = ids => dispatch => {
     dispatch({type:DELETE_APPLICATIONS,payload:{ids}})
 };
-const changeApplication = application => dispatch => {
-    dispatch({type:CHANGE_APPLICATION,payload:{application}})
+export const changeApplication = (id,status) => dispatch => {
+    dispatch({type:CHANGE_APPLICATION_STATUS,payload:{id,status}})
 };
-const addApplication = application => dispatch => {
+export const addApplication = application => dispatch => {
     dispatch({type:ADD_APPLICATION,payload:{application}})
 };
 

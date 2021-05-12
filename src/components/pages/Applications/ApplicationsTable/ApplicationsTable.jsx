@@ -15,11 +15,11 @@ const ApplicationTable = ({applications}) => {
             rowClassName={(record, index) => {
                 return getStatusColor(record.status);
             }}
-            onRow={(record) => {
-                return {
-                    onDoubleClick: event => {dispatch(setApplication(record))}
-                }
-            }}
+            // onRow={(record) => {
+            //     return {
+            //         onDoubleClick: event => {dispatch(setApplication(record))}
+            //     }
+            // }}
         />
     )
 };

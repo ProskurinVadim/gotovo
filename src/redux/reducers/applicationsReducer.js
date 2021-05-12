@@ -5,7 +5,7 @@ import {
     DELETE_APPLICATION,
     DELETE_APPLICATIONS,
     ERROR_APPLICATION,
-    CHANGE_APPLICATION,
+    CHANGE_APPLICATION_STATUS,
     ADD_APPLICATION,
     LOADING_APPLICATIONS,
     TOGGLE_MODAL_APPLICATIONS,
@@ -13,13 +13,13 @@ import {
 const initialState = {
     applications : [
         {data : "01.08.2020", pib: "Имя Отчество Фамилия Имя Отчество Фамилия",pack:"Стандарт",phone:"099-733-12-42",status: "нова",comments:"Не приглашайте родственников",id : "1"},
-        {data : "01.08.2020", pib: "Имя Отчество Фамилия Имя Отчество Фамилия",pack:"Стандарт",phone:"099-733-12-42",status: "в работе",comments:"Не приглашайте родственников",id : "1"},
-        {data : "01.08.2020", pib: "Имя Отчество Фамилия Имя Отчество Фамилия",pack:"Стандарт",phone:"099-733-12-42",status: "запросить еще документы",comments:"Не приглашайте родственников",id : "1"},
-        {data : "01.08.2020", pib: "Имя Отчество Фамилия Имя Отчество Фамилия",pack:"Стандарт",phone:"099-733-12-42",status: "одобрена",comments:"Не приглашайте родственников",id : "1"},
-        {data : "01.08.2020", pib: "Имя Отчество Фамилия Имя Отчество Фамилия",pack:"Стандарт",phone:"099-733-12-42",status: "оплачена",comments:"Не приглашайте родственников",id : "1"},
-        {data : "01.08.2020", pib: "Имя Отчество Фамилия Имя Отчество Фамилия",pack:"Стандарт",phone:"099-733-12-42",status: "срок оплаты истек",comments:"Не приглашайте родственников",id : "1"},
-        {data : "01.08.2020", pib: "Имя Отчество Фамилия Имя Отчество Фамилия",pack:"Стандарт",phone:"099-733-12-42",status: "нова",comments:"Не приглашайте родственников",id : "1"},
-        {data : "01.08.2020", pib: "Имя Отчество Фамилия Имя Отчество Фамилия",pack:"Стандарт",phone:"099-733-12-42",status: "нова",comments:"Не приглашайте родственников",id : "1"},
+        {data : "01.08.2020", pib: "Имя Отчество Фамилия Имя Отчество Фамилия",pack:"Стандарт",phone:"099-733-12-42",status: "в работе",comments:"Не приглашайте родственников",id : "2"},
+        {data : "01.08.2020", pib: "Имя Отчество Фамилия Имя Отчество Фамилия",pack:"Стандарт",phone:"099-733-12-42",status: "запросить еще документы",comments:"Не приглашайте родственников",id : "3"},
+        {data : "01.08.2020", pib: "Имя Отчество Фамилия Имя Отчество Фамилия",pack:"Стандарт",phone:"099-733-12-42",status: "одобрена",comments:"Не приглашайте родственников",id : "4"},
+        {data : "01.08.2020", pib: "Имя Отчество Фамилия Имя Отчество Фамилия",pack:"Стандарт",phone:"099-733-12-42",status: "оплачена",comments:"Не приглашайте родственников",id : "5"},
+        {data : "01.08.2020", pib: "Имя Отчество Фамилия Имя Отчество Фамилия",pack:"Стандарт",phone:"099-733-12-42",status: "срок оплаты истек",comments:"Не приглашайте родственников",id : "6"},
+        {data : "01.08.2020", pib: "Имя Отчество Фамилия Имя Отчество Фамилия",pack:"Стандарт",phone:"099-733-12-42",status: "нова",comments:"Не приглашайте родственников",id : "7"},
+        {data : "01.08.2020", pib: "Имя Отчество Фамилия Имя Отчество Фамилия",pack:"Стандарт",phone:"099-733-12-42",status: "нова",comments:"Не приглашайте родственников",id : "8"},
     ],
     currentApplication : {},
     modal : false,
@@ -78,16 +78,17 @@ export default function (state = initialState,{type,payload}){
             }
         }
         case ADD_APPLICATION : {
-            const newApplications = state.applications.push(payload.application);
+            const newApplications = [...state.applications,payload.application];
             return {
                 ...state,
                 applications : newApplications,
             }
         }
-        case CHANGE_APPLICATION : {
-            const newApplications = state.applications.map(elem =>
-                elem.id = payload.id ? payload.application : elem
-            );
+        case CHANGE_APPLICATION_STATUS : {
+            const newApplications = state.applications.map(elem => {
+                    if (elem.id === payload.id) elem.status = payload.status;
+                    return elem
+                });
             return {
                 ...state,
                 applications : newApplications,

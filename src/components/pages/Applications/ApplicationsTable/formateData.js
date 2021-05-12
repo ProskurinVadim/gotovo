@@ -4,9 +4,9 @@ import Status from "./columns/Status";
 export const getColumns = () => [
     {
         title: "Статус",
-        dataIndex: "status",
-        key: "status",
-        render: data => <Status status={data} />
+        dataIndex: ["status"],
+        key: "status ",
+        render: (data,record) => <Status status={data} id={record.id}/>
     },
     {
         title: "Дата",

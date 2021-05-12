@@ -9,7 +9,7 @@ import {logout} from "../../../redux/actions/authActions";
 import {Link} from "react-router-dom";
 import Logout from "../../icons/Logout"
 const Navbar = () => {
-    const superAdmin = useSelector(({auth}) => auth.currentUser.superAdmin);
+    const superAdmin = useSelector(({auth}) => auth.currentUser.roles[0] === "ROOT");
     console.log(superAdmin)
     const currentApplications = useSelector(({applications})=> applications.currentApplication);
     const dispatch = useDispatch();
@@ -31,9 +31,9 @@ const Navbar = () => {
                 <Link to="applications">
                     <li className="navbar-list-item"><Table className="navbar-icon" /></li>
                 </Link>
-                <Link to="calendar">
-                    <li className="navbar-list-item"><Calendar className="navbar-icon" /></li>
-                </Link>
+                {/*<Link to="calendar">*/}
+                    {/*<li className="navbar-list-item"><Calendar className="navbar-icon" /></li>*/}
+                {/*</Link>*/}
             </ul>
             <div onClick={()=>dispatch(logout())} className={"logout"}>
                 <Logout />

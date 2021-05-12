@@ -17,6 +17,16 @@
     display: inline-block;
     border: 1px solid black;
     padding: 4px 6px;
+    position: relative;
+    &-list {
+      position: absolute;
+      top: 0;
+      left: 0;
+      &-item {
+        padding: 5px;
+        border: 1px solid gray;
+      }
+    }
     @include font-text;
   }
   &-field {

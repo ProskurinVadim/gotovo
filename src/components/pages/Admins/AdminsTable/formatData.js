@@ -33,8 +33,8 @@ export const getColumns = () => [
 
     {
         title: "Редактировать",
-        dataIndex: "index",
-        key: "buttons",
+        dataIndex: "_id",
+        key: "_id",
         render: data => <AdminsButtons data={data}/>
     },
 ];

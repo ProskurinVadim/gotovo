@@ -1,48 +1,13 @@
-import axios from "axios";
+import axios from 'axios';
+import baseURL from "./baseURL";
+import createAuthRefreshInterceptor from 'axios-auth-refresh';
 
-export default (history = null) => {
-    const baseURL = "https://gotovo.herokuapp.com/api/";
+const refreshAuthLogic = failedRequest => axios.post(`${baseURL}/api/v1/auth/accounts/token`).then(tokenRefreshResponse => {
+    localStorage.setItem('token', tokenRefreshResponse.data.token);
+    failedRequest.response.config.headers['Authorization'] = 'Bearer ' + tokenRefreshResponse.data.token;
+    return Promise.resolve();
+});
 
+createAuthRefreshInterceptor(axios, refreshAuthLogic);
 
-    let headers = {};
-
-    if (localStorage.token) {
-        headers.Authorization = `Bearer ${localStorage.token}`;
-
-    }
-
-    const axiosInstance = axios.create({
-        baseURL: baseURL,
-        headers,
-    });
-
-    axiosInstance.interceptors.response.use(
-        (response) =>
-            new Promise((resolve, reject) => {
-                resolve(response);
-            }),
-        (error) => {
-            if (!error.response) {
-                return new Promise((resolve, reject) => {
-                    reject(error);
-                });
-            }
-
-            if (error.response.status === 401) {
-                localStorage.removeItem("token");
-
-                if (history) {
-                    history.push("/auth/login");
-                } else {
-                    window.location = "/auth/login";
-                }
-            } else {
-                return new Promise((resolve, reject) => {
-                    reject(error);
-                });
-            }
-        }
-    );
-
-    return axiosInstance;
-};
+export default axios

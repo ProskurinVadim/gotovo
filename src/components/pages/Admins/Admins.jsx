@@ -1,17 +1,24 @@
-import React,{useState,useCallback} from "react";
-import {useSelector} from "react-redux";
+import React,{useState,useCallback,useEffect} from "react";
+import {useSelector,useDispatch} from "react-redux";
 import AdminsTable from "./AdminsTable";
 import AdminModal from "./AdminsModal";
 import Button from "../../common/Button"
+import {getAdmins} from "../../../redux/actions/adminsAction";
 const Admins = () => {
-    const users = useSelector(({auth})=>auth.users);
+    const users = useSelector(({admins})=>admins.admins);
+    console.log(users)
+    const dispatch = useDispatch();
     const [open,setOpen] = useState();
     const handelClose = useCallback(()=>{
         setOpen(false)
     },[]);
+
+    useEffect(()=> {
+        dispatch(getAdmins())
+    },[]);
     return (
         <div>
-            <Button text="Додати Юзера" onClick={()=>setOpen(!open)}/>
+            <Button text="Додати Юзера" onClick={()=>setOpen(!open)} className="button-common button-m"/>
             {open &&  <AdminModal onClose={handelClose}/>}
             <AdminsTable users={users} />
         </div>

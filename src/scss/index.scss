@@ -5,3 +5,30 @@
 @import "./pages-shared";
 @import "./common";
 @import "../../node_modules/@fortawesome/fontawesome-free/css/all.min.css";
+
+td {
+  border: 1px solid transparent;
+}
+
+
+.table-status {
+  cursor: pointer;
+  display: inline-block;
+  border: 1px solid black;
+  padding: 4px 6px;
+  position: relative;
+
+  &-list {
+    z-index: 5;
+    background-color: #FFFFFF;
+    position: absolute;
+    top: 0;
+    left:  100px;
+
+    &-item {
+      cursor: pointer;
+      padding: 5px;
+      border: 1px solid gray;
+    }
+  }
+}
