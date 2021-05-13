@@ -3,7 +3,9 @@ import StatusList from "./StatusList";
 import {changeApplication} from "../../../../../../redux/actions/applicationsActions";
 import {useDispatch} from "react-redux";
 const statusLocal = ["новая заявка" ,"в работе","запросить еще документы","одобрена","оплачена","срок оплаты истек"];
-const statusTransform = ["NEW" ,"IN_WORK","NEED_DOCUMENTS","APPROVED","PAID","PAYMENT_EXPIRED"];
+
+const statusTransform = ["NEW" ,"IN_WORK","REQUESTED","APPROVED","PAID_UP","EXPIRED_PAYMENT"];
+
 const Status = ({status,id}) => {
     const dispatch = useDispatch();
     const [open,setOpen] = useState(false);

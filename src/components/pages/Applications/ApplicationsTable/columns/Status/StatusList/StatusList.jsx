@@ -1,6 +1,7 @@
 import React from "react";
 const status = ["новая заявка" ,"в работе","запросить еще документы","одобрена","оплачена","срок оплаты истек"];
-const statusTransform = ["NEW" ,"IN_WORK","NEED_DOCUMENTS","APPROVED","PAID","PAYMENT_EXPIRED"];
+
+const statusTransform = ["NEW" ,"IN_WORK","REQUESTED","APPROVED","PAID_UP","EXPIRED_PAYMENT"];
 const StatusList = ({setStatus}) => {
     return (
         <ul className="table-status-list">

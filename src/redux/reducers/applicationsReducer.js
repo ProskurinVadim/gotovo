@@ -86,7 +86,7 @@ export default function (state = initialState,{type,payload}){
         }
         case CHANGE_APPLICATION_STATUS : {
             const newApplications = state.applications.map(elem => {
-                    if (elem.id === payload.id) elem.status = payload.status;
+                    if (elem._id === payload.id) elem.status = payload.status;
                     return elem
                 });
             return {

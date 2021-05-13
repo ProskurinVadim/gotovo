@@ -36,7 +36,7 @@ const deleteApplications = ids => dispatch => {
 };
 export const changeApplication = (id,status) => dispatch => {
     axios
-        .patch(`${baseURL}/api/v1/orders`,{status,_id:id})
+        .patch(`${baseURL}/api/v1/orders/${id}`,{status,_id:id})
         .then(()=>dispatch({type:CHANGE_APPLICATION_STATUS,payload:{id,status}}));
 };
 export const addApplication = application => dispatch => {

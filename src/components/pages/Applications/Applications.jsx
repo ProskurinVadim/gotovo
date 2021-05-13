@@ -19,7 +19,7 @@ const Applications = () => {
     const applications = useSelector(({applications}) => applications.applications);
     return (
         <div className={"applications-page"}>
-            <Button text="Додати Заявку" onClick={()=>setOpen(!open)} className="button-common button-m"/>
+            {/*<Button text="Додати Заявку" onClick={()=>setOpen(!open)} className="button-common button-m"/>*/}
             {open &&  <ApplicationModal cancelClick={handelClose} length={applications.length}/>}
             <ApplicationsTable applications={applications} />
         </div>
