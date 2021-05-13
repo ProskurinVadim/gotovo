@@ -4,7 +4,7 @@ import baseURL from "../../axios/baseURL";
 
 export const deleteAdmin = (id) => dispatch =>  {
     return axios
-        .delete(`${baseURL}​/api​/v1​/admins​/${id}`,{headers : { 'Authorization' : 'Bearer ' + localStorage.getItem("token")}})
+        .delete(`${baseURL}​/api/v1/admins/${id}`,{headers : { 'Authorization' : 'Bearer ' + localStorage.getItem("token")}})
         .then(()=> dispatch({type:DELETE_ADMIN,payload:{id}}))
         .catch(e => {
             dispatch({type:DELETE_ADMIN,payload:{id}})
