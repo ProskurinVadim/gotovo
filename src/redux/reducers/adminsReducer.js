@@ -10,7 +10,7 @@ export default function (state = initialState, {type,payload}) {
 
         case DELETE_ADMIN : {
             const newUser = state.admins;
-            newUser.filter(elem=>elem.index!==payload.id);
+            newUser.filter(elem=>elem._id!==payload.id);
             return{
                 ...state,
                 admins : [...newUser.filter(elem=>elem.index!==payload.id)]
