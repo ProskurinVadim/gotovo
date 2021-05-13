@@ -32,7 +32,7 @@ export default function (state = initialState,{type,payload}){
         case GET_APPLICATIONS : {
             return {
                 ...state,
-                // applications: payload.applications,
+                applications: payload.applications,
                 error : "",
                 loading : false,
             }

@@ -13,7 +13,9 @@ const Applications = () => {
     const handelClose = useCallback(()=>{
         setOpen(false)
     },[]);
-
+    useEffect(()=>{
+        dispatch(getApplications())
+    },[]);
     const applications = useSelector(({applications}) => applications.applications);
     return (
         <div className={"applications-page"}>

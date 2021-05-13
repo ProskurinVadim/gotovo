@@ -6,24 +6,30 @@ export const getColumns = () => [
         title: "Статус",
         dataIndex: ["status"],
         key: "status ",
-        render: (data,record) => <Status status={data} id={record.id}/>
+        render: (data,record) => <Status status={data} id={record._id}/>
     },
     {
-        title: "Дата",
-        dataIndex: "data",
-        key: "data",
+        title: "Дата одруження",
+        dataIndex: "weddingDate",
+        key: "weddingDate",
         render: data => <p>{data}</p>
     },
     {
-        title: "П.І.Б Нареченої та Нареченого",
-        dataIndex: "pib",
-        key: "pib",
+        title: "П.І.Б Нареченої Нареченого",
+        dataIndex: "WifeSFullName",
+        key: "WifeSFullName",
+        render: data => <Person person={data} />
+    },
+    {
+        title: "П.І.Б  Нареченого",
+        dataIndex: "fullNameOfTheHusband",
+        key: "fullNameOfTheHusband",
         render: data => <Person person={data} />
     },
     {
         title: "Тариф",
-        dataIndex: "pack",
-        key: "pack",
+        dataIndex: "plan",
+        key: "plan",
         render: data => <p>{data}</p>
     },
     {

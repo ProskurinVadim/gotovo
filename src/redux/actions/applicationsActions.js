@@ -14,10 +14,16 @@ import axios from "../../axios";
 import baseURL from "../../axios/baseURL"
 export const getApplications = () => dispatch => {
     dispatch(loadApplications());
-    axios.get(`${baseURL}/api/v1/orders`)
+    axios.get(`${baseURL}/api/v1/orders`,{headers : { 'Authorization' : 'Bearer ' + localStorage.getItem("token")}})
+        .then(({data})=> {
+            console.log(data)
+            dispatch({type:GET_APPLICATIONS,payload:{applications:data.results}})
+        })
 };
 export const setApplication = application => dispatch => {
-    dispatch({type : SET_APPLICATION,payload:{application}})
+    axios
+        .post(`${baseURL}/api/v1/orders`,{...application},{headers : { 'Authorization' : 'Bearer ' + localStorage.getItem("token")}})
+        .then(()=>dispatch({type : SET_APPLICATION,payload:{application}}))
 };
 export const unSetApplications = () => dispatch => {
     dispatch({type:UNSET_APPLICATION})
@@ -29,7 +35,9 @@ const deleteApplications = ids => dispatch => {
     dispatch({type:DELETE_APPLICATIONS,payload:{ids}})
 };
 export const changeApplication = (id,status) => dispatch => {
-    dispatch({type:CHANGE_APPLICATION_STATUS,payload:{id,status}})
+    axios
+        .patch(`${baseURL}/api/v1/orders`,{status,_id:id})
+        .then(()=>dispatch({type:CHANGE_APPLICATION_STATUS,payload:{id,status}}));
 };
 export const addApplication = application => dispatch => {
     dispatch({type:ADD_APPLICATION,payload:{application}})
