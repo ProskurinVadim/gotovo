@@ -2,6 +2,15 @@
   &-header {
     @include font-header;
   }
+  &-buttons{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 20px 50px;
+    .button-common {
+      margin: 0;
+    }
+  }
   &-modal.modal {
     padding: 20px;
     top: calc(50% - 300px);
@@ -45,8 +54,26 @@
   &-date-picker {
     padding: 4px 11px;
   }
+  &-text {
+    color: rgba(17, 17, 17, 0.48);
+    margin: 9px 27px;
+    font-family: Exo, sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    border: none;
+  }
+  &-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
 }
-
 .ant-table-tbody > tr.ant-table-row-level-1:hover > td {
   background: unset!important;
+}
+.link {
+  color: #42A5F5;
+  cursor: pointer;
 }

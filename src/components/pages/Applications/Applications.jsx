@@ -1,26 +1,47 @@
 import React,{useCallback,useEffect,useState} from "react";
-import Navbar from "../../pages-shared/Navbar"
 import ApplicationsTable from "./ApplicationsTable"
 import Button from "../../common/Button";
-import {toggleApplicationsModal,getApplications} from "../../../redux/actions/applicationsActions";
-import {useDispatch, useSelector} from "react-redux";
-import AdminModal from "../Admins/Admins";
+import Toggle from "../../common/Toggle";
+import LocalModal from "../../common/LocalModal";
+import {toggleApplicationsModal,getApplications,getMarriageOffice,serMarriageOffice} from "../../../redux/actions/applicationsActions";
+import {useDispatch, useSelector,shallowEqual} from "react-redux";
 import ApplicationModal from "./ApplicationModal";
 const Applications = () => {
-    const [open,setOpen] = useState(false);
+    const {modal,applications,marriageOffice} = useSelector(({applications}) => applications,shallowEqual);
     const dispatch = useDispatch();
-    const handelClick = useCallback(()=>dispatch(toggleApplicationsModal()),[]);
-    const handelClose = useCallback(()=>{
-        setOpen(false)
-    },[]);
+    const [toggle,setToggle] = useState("");
+    useEffect(()=> {
+        marriageOffice === "" && dispatch(getMarriageOffice())
+    });
+    const handelSetToggle = (id) => {
+        console.log(id)
+        const newData = marriageOffice.map(elem => elem._id !== id ? {...elem,isActive:false} : {...elem,isActive:true});
+        dispatch(serMarriageOffice(id,newData))
+    };
+    const handelClose = useCallback(()=> dispatch(toggleApplicationsModal(false)),[]);
+    const handelOpen = useCallback(()=> dispatch(toggleApplicationsModal(true,"new",)),[]);
+
+    // const handelOpenLocal = (togel) => {
+    //     setOpen(true);
+    //     setToggle(togel)
+    // };
     useEffect(()=>{
         dispatch(getApplications())
     },[]);
-    const applications = useSelector(({applications}) => applications.applications);
     return (
         <div className={"applications-page"}>
-            {/*<Button text="Додати Заявку" onClick={()=>setOpen(!open)} className="button-common button-m"/>*/}
-            {open &&  <ApplicationModal cancelClick={handelClose} length={applications.length}/>}
+            <div className="application-buttons">
+                <Button text="Додати Заявку" onClick={()=>handelOpen()} className="button-common"/>
+                {marriageOffice !== "" &&
+                <LocalModal
+                    onClick={handelSetToggle}
+                    elem={marriageOffice.length ? marriageOffice.filter(elem => elem._id === toggle && elem)[0] : {name:""}}
+                >
+                        <Toggle toggleValue={marriageOffice} setToggleValue={setToggle}/>
+                 </LocalModal>
+                }
+            </div>
+            {modal &&  <ApplicationModal cancelClick={handelClose} length={applications.length}/>}
             <ApplicationsTable applications={applications} />
         </div>
     )

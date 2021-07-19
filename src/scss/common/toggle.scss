@@ -1,0 +1,21 @@
+.toggle {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid black;
+  width: fit-content;
+  border-radius: 4px;
+  &-item {
+    color: #3D3D3D;
+    font-family: Exo, sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 14px 11px;
+    cursor: pointer;
+    &:first-child {
+      border-right: 1px solid black;
+    }
+    &.active {
+      background-color: #FFD251;
+    }
+  }
+}

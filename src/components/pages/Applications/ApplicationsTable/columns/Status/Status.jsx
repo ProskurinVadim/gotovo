@@ -6,7 +6,7 @@ const statusLocal = ["новая заявка" ,"в работе","запрос�
 
 const statusTransform = ["NEW" ,"IN_WORK","REQUESTED","APPROVED","PAID_UP","EXPIRED_PAYMENT"];
 
-const Status = ({status,id}) => {
+const Status = ({status,id,className=""}) => {
     const dispatch = useDispatch();
     const [open,setOpen] = useState(false);
     const index = statusTransform.indexOf(status);
@@ -20,7 +20,7 @@ const Status = ({status,id}) => {
     },[_status]);
     return (
         <>
-            <p className={"table-status "} onClick={toggleOpen}>{statusLocal[index]}</p>
+            <p className={`table-status ${className}`} onClick={toggleOpen}>{statusLocal[index]}</p>
             {open && <StatusList setStatus={set_Status} />}
         </>
 

@@ -6,7 +6,7 @@ const StatusList = ({setStatus}) => {
     return (
         <ul className="table-status-list">
             {
-                status.map((elem,i) => <li className="table-status-list-item" onClick={() => setStatus(statusTransform[i])}>{elem}</li>)
+                status.map((elem,i) => <li key={`status-item-${i}`} className="table-status-list-item" onClick={() => setStatus(statusTransform[i])}>{elem}</li>)
             }
         </ul>
     )

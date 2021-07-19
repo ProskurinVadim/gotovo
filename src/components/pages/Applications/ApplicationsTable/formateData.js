@@ -15,9 +15,9 @@ export const getColumns = () => [
         render: data => <p>{data}</p>
     },
     {
-        title: "П.І.Б Нареченої Нареченого",
-        dataIndex: "WifeSFullName",
-        key: "WifeSFullName",
+        title: "П.І.Б Нареченої",
+        dataIndex: "wifeSFullName",
+        key: "wifeSFullName",
         render: data => <Person person={data} />
     },
     {

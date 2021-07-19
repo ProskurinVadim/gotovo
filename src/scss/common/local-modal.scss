@@ -1,0 +1,24 @@
+.local-modal {
+  width: 390px;
+  z-index: 11;
+  top: 67px;
+  padding: 15px 26px;
+  position: absolute;
+  background-color: white;
+  border: 1px solid red;
+
+  p {
+    color: #3D3D3D;
+    font-family: Exo, sans-serif;
+    font-size: 16px;
+  }
+
+  .button-common {
+    padding: 5px 11px;
+    width: 100px;
+  }
+
+  .application-buttons {
+    padding-bottom: 0;
+  }
+}

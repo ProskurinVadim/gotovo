@@ -31,9 +31,9 @@ const Navbar = () => {
                 <Link to="applications">
                     <li className="navbar-list-item"><Table className="navbar-icon" /></li>
                 </Link>
-                {/*<Link to="calendar">*/}
-                    {/*<li className="navbar-list-item"><Calendar className="navbar-icon" /></li>*/}
-                {/*</Link>*/}
+                <Link to="calendar">
+                    <li className="navbar-list-item"><Calendar className="navbar-icon" /></li>
+                </Link>
             </ul>
             <div onClick={()=>dispatch(logout())} className={"logout"}>
                 <Logout />

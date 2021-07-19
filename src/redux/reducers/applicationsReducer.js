@@ -9,6 +9,7 @@ import {
     ADD_APPLICATION,
     LOADING_APPLICATIONS,
     TOGGLE_MODAL_APPLICATIONS,
+    SET_MARRIAGE_OFFICE
 } from "../actionsNames";
 const initialState = {
     applications : [
@@ -23,7 +24,9 @@ const initialState = {
     ],
     currentApplication : {},
     modal : false,
+    marriageOffice : "",
     loading : false,
+    modalType:"",
     error : ""
 };
 
@@ -97,7 +100,15 @@ export default function (state = initialState,{type,payload}){
         case TOGGLE_MODAL_APPLICATIONS : {
             return {
                 ...state,
-                modal : !state.modal,
+                modal : payload.modal,
+                modalType : payload.modalType,
+                currentApplication : payload.currentApplication
+            }
+        }
+        case SET_MARRIAGE_OFFICE : {
+            return {
+                ...state,
+                marriageOffice: payload.marriageOffice
             }
         }
         default : {
