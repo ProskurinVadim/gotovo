@@ -31,7 +31,7 @@ const Applications = () => {
     return (
         <div className={"applications-page"}>
             <div className="application-buttons">
-                <Button text="Додати Заявку" onClick={()=>handelOpen()} className="button-common"/>
+                {/*<Button text="Додати Заявку" onClick={()=>handelOpen()} className="button-common"/>*/}
                 {marriageOffice !== "" &&
                 <LocalModal
                     onClick={handelSetToggle}

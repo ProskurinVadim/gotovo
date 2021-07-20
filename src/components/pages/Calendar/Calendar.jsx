@@ -18,6 +18,7 @@ const Calendar = () => {
     const formatData = useMemo(()=>applications.filter(elem => {
             const data = format(parseISO(elem.weddingDate),"y MMM");
             const currentData = format(currentMonth,"y MMM");
+            console.log(data,currentData,"---")
             return data === currentData && elem
         }),[applications,currentMonth]);
     const formatUnBlockDays = useMemo(()=>unBlockDays.filter(elem => {
@@ -25,7 +26,6 @@ const Calendar = () => {
         const currentData = format(currentMonth,"y MMM");
         return data === currentData && elem
     }),[unBlockDays,currentMonth]);
-    console.log(formatUnBlockDays)
     const handelUnBlockDay =(day,time) => {
         const str = `${currentMonth.getFullYear()}-${currentMonth.getMonth()+1 < 10 ? 0 :""}${currentMonth.getMonth()+1}-${day <10 ? 0 : ""}${day}T${time}`;
         const startData = format(parseISO(str), "yyyy-MM-dd'T'HH:mm:ss.SSSxxx");

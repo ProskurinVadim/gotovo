@@ -1,6 +1,7 @@
 import Person from "./columns/Person";
 import Data from "./columns/Data";
 import Status from "./columns/Status";
+import {format, isValid, parseISO} from "date-fns";
 export const getColumns = () => [
     {
         title: "Статус",
@@ -12,7 +13,7 @@ export const getColumns = () => [
         title: "Дата одруження",
         dataIndex: "weddingDate",
         key: "weddingDate",
-        render: data => <p>{data}</p>
+        render: data => <p>{isValid(parseISO(data)) ? format(parseISO(data.slice(0,-5)),"yyyy-MM-dd hh:mm") : "Невірна дата"}</p>
     },
     {
         title: "П.І.Б Нареченої",

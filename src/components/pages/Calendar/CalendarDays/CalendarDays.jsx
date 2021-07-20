@@ -40,17 +40,14 @@ const CalendarDays = ({view,data,dayNumber,unBlockDays,onClick}) => {
                 endDate : format(parseISO(elem.endDate),"d HH:mm").split(" ")
             }
         }).filter(elem => {
-            console.log(elem,dayNumber)
             return elem.startDate[0] === dayNumber
         }).map(elem => {
             return {startDate : elem.startDate[1],endDate:elem.endDate[1]}
         });
         if(date.length) {
             const flag = date.filter(elem => {
-                console.log(elem,data)
                 return (elem.startDate===data && elem.endDate === data)
             });
-            console.log(flag)
             return flag.length
         }
         else if(range.disabled) return false;
