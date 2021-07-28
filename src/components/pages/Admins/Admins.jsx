@@ -6,7 +6,6 @@ import Button from "../../common/Button"
 import {getAdmins} from "../../../redux/actions/adminsAction";
 const Admins = () => {
     const users = useSelector(({admins})=>admins.admins);
-    console.log(users)
     const dispatch = useDispatch();
     const [open,setOpen] = useState();
     const handelClose = useCallback(()=>{

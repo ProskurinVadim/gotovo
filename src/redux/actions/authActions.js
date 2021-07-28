@@ -10,7 +10,8 @@ export const authLogin = (email,password) => dispatch => {
             localStorage.setItem('token', data.accessToken);
             localStorage.setItem('refresh-token', data.refreshToken);
             dispatch(authSuccess(data.adminInfo))
-    });
+        })
+        .catch(e => dispatch(authLoading()))
 
 };
 
@@ -21,5 +22,5 @@ export const logout = () => dispatch=> {
     dispatch({type:LOGOUT});
 };
 
-const authSuccess = (auth) => ({type : AUTH_SUCCESS,payload:{auth}});
+export const authSuccess = (auth) => ({type : AUTH_SUCCESS,payload:{auth}});
 const authLoading = () => ({type : AUTH_LOADING});

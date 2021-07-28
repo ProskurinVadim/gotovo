@@ -13,7 +13,20 @@ export const getColumns = () => [
         title: "Дата одруження",
         dataIndex: "weddingDate",
         key: "weddingDate",
-        render: data => <p>{isValid(parseISO(data)) ? format(parseISO(data.slice(0,-5)),"yyyy-MM-dd hh:mm") : "Невірна дата"}</p>
+        render: data => <p>
+            {data !== "" ?
+                isValid(parseISO(data)) ?
+                    format(parseISO(data.slice(0,-4)),"yyyy-MM-dd hh:mm")
+                    : "Невірна дата"
+                : "Дата не назначена"
+            }
+        </p>
+    },
+    {
+        title: "Дата отримання заявки",
+        dataIndex: "createdAt",
+        key: "createdAt",
+        render: data => <p>{isValid(parseISO(data)) ? format(parseISO(data.slice(0,-4)),"yyyy-MM-dd hh:mm") : "Невірна дата"}</p>
     },
     {
         title: "П.І.Б Нареченої",

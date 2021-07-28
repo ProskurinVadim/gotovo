@@ -23,8 +23,8 @@ const AuthorizationForm = ({loading}) => {
     return (
         <form className={"authorization-form"}>
             <p className="authorization-form-header">Вхід до адмін панелі</p>
-            <Field bind={bindEmail} error={emailError} placeholder="Введіть імейл" type="text"/>
-            <Field bind={bindPassword} error={passwordError} placeholder="Введіть пароль" type="password"/>
+            <Field bind={bindEmail} error={!loading && emailError} placeholder="Введіть імейл" type="text"/>
+            <Field bind={bindPassword} error={!loading && passwordError} placeholder="Введіть пароль" type="password"/>
             <Loadable loading={loading}>
                 <Button className="authorization-form-button button-common" preventDefault onClick={ButtonOnclick} text="Вхід"/>
             </Loadable>

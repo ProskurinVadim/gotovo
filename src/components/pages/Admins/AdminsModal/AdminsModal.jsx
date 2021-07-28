@@ -15,6 +15,7 @@ const AdminsModal = ({onClose}) => {
     const handelClick = useCallback(()=>{
         const admin = {email:emailValue,password:passwordValue,name:nameValue,phone:phoneValue};
         dispatch(addAdmin(admin))
+        onClose()
     },[emailValue,passwordValue,nameValue,phoneValue]);
     return (
         <Modal okFunction={handelClick} cancelFunction={onClose} cancelText="Закрити" okText="Зберегти" hideFunction={onClose} className="">

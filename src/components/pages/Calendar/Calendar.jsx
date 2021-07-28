@@ -16,11 +16,12 @@ const Calendar = () => {
         dispatch(getUnblockDays())
     },[]);
     const formatData = useMemo(()=>applications.filter(elem => {
-            const data = format(parseISO(elem.weddingDate),"y MMM");
-            const currentData = format(currentMonth,"y MMM");
-            console.log(data,currentData,"---")
+        if(elem.weddingDate !=="") {
+            const data = format(parseISO(elem.weddingDate), "y MMM");
+            const currentData = format(currentMonth, "y MMM");
             return data === currentData && elem
-        }),[applications,currentMonth]);
+        }
+    }),[applications,currentMonth]);
     const formatUnBlockDays = useMemo(()=>unBlockDays.filter(elem => {
         const data = isValid(parseISO(elem.startDate)) && format(parseISO(elem.startDate),"y MMM");
         const currentData = format(currentMonth,"y MMM");

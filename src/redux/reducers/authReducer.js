@@ -1,4 +1,4 @@
-import {AUTH_SUCCESS, AUTH_LOADING,LOGOUT} from "../actionsNames";
+import {AUTH_SUCCESS, AUTH_LOADING,LOGOUT,authFa} from "../actionsNames";
 const initialState = {
     currentUser : {},
     errorMessage : "",
@@ -20,7 +20,7 @@ export default function (state = initialState, {type,payload}) {
         case AUTH_LOADING : {
             return {
                 ...state,
-                loading : true,
+                loading : !state.loading,
             }
         }
 

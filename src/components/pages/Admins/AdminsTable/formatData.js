@@ -35,6 +35,6 @@ export const getColumns = () => [
         title: "Редактировать",
         dataIndex: "_id",
         key: "_id",
-        render: data => <AdminsButtons data={data}/>
+        render: (data,record) => <AdminsButtons data={record}/>
     },
 ];

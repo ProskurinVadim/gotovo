@@ -9,18 +9,15 @@ export default function (state = initialState, {type,payload}) {
     switch (type) {
 
         case DELETE_ADMIN : {
-            const newUser = state.admins;
-            newUser.filter(elem=>elem._id!==payload.id);
+            const newUser = state.admins.filter(elem=>elem.email!==payload.email);
             return{
                 ...state,
-                admins : [...newUser.filter(elem=>elem.index!==payload.id)]
+                admins : [...newUser]
             }
         }
         case ADD_ADMIN : {
-            const newUsers = [...state.admins,payload.admin];
             return {
                 ...state,
-                admins: newUsers
             }
         }
         case CHANGE_ADMIN : {

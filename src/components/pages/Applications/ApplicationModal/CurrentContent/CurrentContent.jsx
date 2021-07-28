@@ -21,7 +21,6 @@ const CurrentContent = ({currentApplication}) => {
         husbandPassport,
         wifePassport
     } = currentApplication;
-    console.log(weddingDate,"DDADADDA")
     const d = weddingDate;
     console.log(d,weddingDate)
     return (
