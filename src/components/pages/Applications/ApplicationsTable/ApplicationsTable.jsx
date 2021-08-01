@@ -17,7 +17,7 @@ const ApplicationTable = ({applications}) => {
             }}
             onRow={(record,index) => {
                 return {
-                    onDoubleClick: event => {dispatch(toggleApplicationsModal(true,"current",applications[index]))}
+                    onDoubleClick: event => {dispatch(toggleApplicationsModal(true,applications[index]))}
                 }
             }}
         />

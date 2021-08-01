@@ -1,10 +1,14 @@
 import React,{useState} from "react";
 import Button from "../Button";
-const LocalModal = ({elem,children,onClick=()=>null,}) => {
-    const [open,setOpen] = useState(false);
+const LocalModal = ({children,onCancel=()=>null,onSubmit=()=>null,initialOpen,text}) => {
+    const [open,setOpen] = useState(initialOpen);
     const handelClick = () => {
         setOpen(false);
-        onClick(elem._id);
+        onSubmit();
+    };
+    const handelCancel = () => {
+        onCancel();
+        setOpen(false);
     };
     return  (
         <div style={{position:"relative"}} >
@@ -14,11 +18,11 @@ const LocalModal = ({elem,children,onClick=()=>null,}) => {
             {open &&
                 <div className="local-modal" style={{position : "absolute"}}>
                     <p>
-                        Бажаєте змінити загс на {elem.name}
+                        {text}
                     </p>
                     <div className="application-buttons">
                         <Button className="button-common" text="Так" onClick={handelClick}/>
-                        <Button className="button-common button-common-dangerous" text="Ні" onClick={()=>setOpen(false)}/>
+                        <Button className="button-common button-common-dangerous" text="Ні" onClick={handelCancel}/>
                     </div>
                 </div>
             }

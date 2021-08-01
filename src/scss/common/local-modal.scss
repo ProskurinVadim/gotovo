@@ -21,4 +21,9 @@
   .application-buttons {
     padding-bottom: 0;
   }
+  .application-doc-item {
+    width: 200px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
 }

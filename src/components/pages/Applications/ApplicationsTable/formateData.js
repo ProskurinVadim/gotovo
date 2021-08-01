@@ -55,8 +55,8 @@ export const getColumns = () => [
 
     {
         title: "Коментарі та побажання",
-        dataIndex: "comments",
-        key: "comments",
+        dataIndex: "comment",
+        key: "comment",
         render: data => <p>{data}</p>
     },
 ];

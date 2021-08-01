@@ -6,12 +6,12 @@ export const getColumns = () => [
         key: "index",
         render: data => <p>{data}</p>
     },
-    {
-        title: "ФИО",
-        dataIndex: "name",
-        key: "name",
-        render: data => <p>{data}</p>
-    },
+    // {
+    //     title: "ФИО",
+    //     dataIndex: "name",
+    //     key: "name",
+    //     render: data => <p>{data}</p>
+    // },
     {
         title: "Email",
         dataIndex: "email",
@@ -24,12 +24,12 @@ export const getColumns = () => [
         key: "password",
         render: data => <p>{data}</p>
     },
-    {
-        title: "Контактний номер телефону",
-        dataIndex: "phone",
-        key: "phone",
-        render: data => <p>{data}</p>
-    },
+    // {
+    //     title: "Контактний номер телефону",
+    //     dataIndex: "phone",
+    //     key: "phone",
+    //     render: data => <p>{data}</p>
+    // },
 
     {
         title: "Редактировать",

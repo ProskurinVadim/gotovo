@@ -26,7 +26,7 @@ const initialState = {
     modal : false,
     marriageOffice : "",
     loading : false,
-    modalType:"",
+    add:false,
     error : ""
 };
 
@@ -101,8 +101,8 @@ export default function (state = initialState,{type,payload}){
             return {
                 ...state,
                 modal : payload.modal,
-                modalType : payload.modalType,
-                currentApplication : payload.currentApplication
+                currentApplication : payload.currentApplication,
+                add : payload.add ? payload.add : false,
             }
         }
         case SET_MARRIAGE_OFFICE : {

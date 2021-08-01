@@ -18,7 +18,7 @@ export const getApplications = () => dispatch => {
     dispatch(loadApplications());
     axios.get(`${baseURL}/api/v1/orders`,{headers : { 'Authorization' : 'Bearer ' + localStorage.getItem("token")}})
         .then(({data})=> {
-            dispatch({type:GET_APPLICATIONS,payload:{applications:data.results}})
+            dispatch(getApplicationsData(data.results))
         })
 };
 export const setApplication = application => dispatch => {
@@ -29,20 +29,20 @@ export const setApplication = application => dispatch => {
 export const unSetApplications = () => dispatch => {
     dispatch({type:UNSET_APPLICATION})
 };
-const deleteApplication = index => dispatch => {
-    dispatch({type:DELETE_APPLICATION,payload:{index}})
+export const deleteApplication = id => {
+    axios.delete(`${baseURL}/api/v1/orders/${id}`,{headers : { 'Authorization' : 'Bearer ' + localStorage.getItem("token")}})
 };
-export const changeApplication = (id,status) => dispatch => {
+export const changeApplication = (id,status,comment) => dispatch => {
     axios
-        .patch(`${baseURL}/api/v1/orders/${id}`,{status,_id:id},{headers : { 'Authorization' : 'Bearer ' + localStorage.getItem("token")}})
+        .patch(`${baseURL}/api/v1/orders/${id}`,{status,_id:id,comment},{headers : { 'Authorization' : 'Bearer ' + localStorage.getItem("token")}})
         .then(()=>dispatch({type:CHANGE_APPLICATION_STATUS,payload:{id,status}}));
 };
-export const addApplication = application => dispatch => {
-    dispatch({type:ADD_APPLICATION,payload:{application}})
+export const addApplication = application => {
+    axios.post(`${baseURL}/api/v1/orders`,application,{headers : { 'Authorization' : 'Bearer ' + localStorage.getItem("token")}})
 };
 
-export const toggleApplicationsModal = (modal,modalType="",currentApplication={}) => dispatch => {
-    dispatch({type:TOGGLE_MODAL_APPLICATIONS,payload:{modal,modalType,currentApplication}});
+export const toggleApplicationsModal = (modal,currentApplication={},add) => dispatch => {
+    dispatch({type:TOGGLE_MODAL_APPLICATIONS,payload:{modal,currentApplication,add}});
 };
 export const getDocuments = (docId) => {
     axios
@@ -52,21 +52,6 @@ export const getDocuments = (docId) => {
             newWindow.location.href = '/some/url';
         });
 };
-export const getMarriageOffice = () => dispatch => {
-  axios
-      .get(`${baseURL}/api/v1/marriage-office`,{headers : { 'Authorization' : 'Bearer ' + localStorage.getItem("token")}})
-      .then(({data})=>  {
-          dispatch({type:SET_MARRIAGE_OFFICE,payload:{marriageOffice:data}})
-      })
-
-};
-export const serMarriageOffice = (id,marriageOffice) => dispatch => {
-    axios
-        .patch(`${baseURL}/api/v1/marriage-office/${id}`,{},{headers : { 'Authorization' : 'Bearer ' + localStorage.getItem("token")}})
-        .then(({data})=>  {
-            dispatch({type:SET_MARRIAGE_OFFICE,payload:{marriageOffice:marriageOffice}})
-        })
-};
-
+export const getApplicationsData = (applications) => ({type:GET_APPLICATIONS,payload:{applications}});
 const errorApplications = err => ({type:ERROR_APPLICATION,payload:{err}});
 const loadApplications = () => ({type:LOADING_APPLICATIONS});

@@ -19,8 +19,14 @@ export const addAdmin = (admin) => dispatch => {
 };
 
 export const chnageAdmin  = (id,admin) => dispatch => {
-    dispatch(deleteAdmin(id));
-    dispatch(addAdmin(admin));
+    axios
+        .put(`${baseURL}​/api/v1/admins/${id}`,{...admin},{headers : { 'Authorization' : 'Bearer ' + localStorage.getItem("token")}})
+        .then(()=> {
+            dispatch(getAdmins())
+        })
+        .catch(e => {
+            console.log(e)
+        })
     dispatch(getAdmins())
 };
 

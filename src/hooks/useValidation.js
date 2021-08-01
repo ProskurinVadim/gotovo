@@ -6,6 +6,7 @@ export const useValidation = (key) => {
     return {
         validation : useCallback((data) => {
             !validation.validationFunc(data) ? setError(validation.validationText) : setError("")
+            return !validation.validationFunc(data)
         },key),
         errorText : error
     }
