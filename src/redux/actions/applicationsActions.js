@@ -40,7 +40,7 @@ export const changeApplication = (id,status,comment) => dispatch => {
 export const addApplication = application => {
     axios.post(`${baseURL}/api/v1/orders`,application,{headers : { 'Authorization' : 'Bearer ' + localStorage.getItem("token")}})
 };
-
+export const addSocketApplication = (application) => ({type:ADD_APPLICATION,payload:{application}});
 export const toggleApplicationsModal = (modal,currentApplication={},add) => dispatch => {
     dispatch({type:TOGGLE_MODAL_APPLICATIONS,payload:{modal,currentApplication,add}});
 };

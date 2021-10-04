@@ -38,14 +38,14 @@ const   ApplicationModal = ({cancelClick,length}) => {
             className="application-modal"
         >
             <>
-                {!add &&
-                <span
-                    onClick={toggleType}
-                    style={{marginLeft: "95%",color:"#FFD251",fontSize:24,cursor:"pointer"}}
-                >
-                        <Edit />
-                </span>
-                }
+                {/*{!add &&*/}
+                {/*<span*/}
+                    {/*onClick={toggleType}*/}
+                    {/*style={{marginLeft: "95%",color:"#FFD251",fontSize:24,cursor:"pointer"}}*/}
+                {/*>*/}
+                        {/*<Edit />*/}
+                {/*</span>*/}
+                {/*}*/}
                 {
                     add ?
                         <AddContent

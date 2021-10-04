@@ -9,7 +9,8 @@ import {
     ADD_APPLICATION,
     LOADING_APPLICATIONS,
     TOGGLE_MODAL_APPLICATIONS,
-    SET_MARRIAGE_OFFICE
+    SET_MARRIAGE_OFFICE,
+    ADD_SOKET_APPLICATION
 } from "../actionsNames";
 const initialState = {
     applications : [
@@ -33,9 +34,10 @@ const initialState = {
 export default function (state = initialState,{type,payload}){
     switch (type) {
         case GET_APPLICATIONS : {
+            console.log(payload.applications)
             return {
                 ...state,
-                applications: payload.applications,
+                applications: [...payload.applications],
                 error : "",
                 loading : false,
             }
@@ -81,7 +83,7 @@ export default function (state = initialState,{type,payload}){
             }
         }
         case ADD_APPLICATION : {
-            const newApplications = [...state.applications,payload.application];
+            const newApplications = [payload.application,...state.applications];
             return {
                 ...state,
                 applications : newApplications,

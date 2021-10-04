@@ -19,7 +19,7 @@ const PrivateRoute = () => {
                     <NavbarWeapper>
                         <Route path="/applications" component={Applications}/>
                         <Route path="/admins" component={Admins}/>
-                        <Route path="/calendar" component={Calendar} />
+                        {/*<Route path="/calendar" component={Calendar} />*/}
                         <ModalWrapper />
                     </NavbarWeapper>
                 </If>
